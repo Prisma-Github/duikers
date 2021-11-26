@@ -1,1 +1,1 @@
-Webmap met duikers Demo: https://prisma-github.github.io/duikers/index
+Webmap met duikers Demo: https://prisma-github.github.io/duikers/
