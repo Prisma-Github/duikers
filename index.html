@@ -8,8 +8,6 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="css/MarkerCluster.css">
-        <link rel="stylesheet" href="css/MarkerCluster.Default.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
@@ -37,7 +35,6 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="js/leaflet.markercluster.js"></script>
         <script src="data/Duikers_2.js"></script>
         <script>
         var map = L.map('map', {
@@ -112,7 +109,7 @@
             return {
                 pane: 'pane_Duikers_2',
                 shape: 'x',
-                radius: 4.0,
+                radius: 6.0,
                 opacity: 1,
                 color: 'rgba(215,25,28,1.0)',
                 dashArray: '',
@@ -143,12 +140,8 @@
                 return L.shapeMarker(latlng, style_Duikers_2_0(feature));
             },
         });
-        var cluster_Duikers_2 = new L.MarkerClusterGroup({showCoverageOnHover: false,
-            spiderfyDistanceMultiplier: 2});
-        cluster_Duikers_2.addLayer(layer_Duikers_2);
-
         bounds_group.addLayer(layer_Duikers_2);
-        cluster_Duikers_2.addTo(map);
+        map.addLayer(layer_Duikers_2);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -160,7 +153,7 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/Duikers_2.png" /> Duikers': cluster_Duikers_2,"OSM Standard": layer_OSMStandard_1,"Positron": layer_Positron_0,},{collapsed:false}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/Duikers_2.png" /> Duikers': layer_Duikers_2,"OSM Standard": layer_OSMStandard_1,"Positron": layer_Positron_0,}).addTo(map);
         setBounds();
         var i = 0;
         layer_Duikers_2.eachLayer(function(layer) {
